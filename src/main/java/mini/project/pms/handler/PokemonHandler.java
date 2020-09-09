@@ -86,12 +86,12 @@ public class PokemonHandler {
       String name = Prompt.inputString("어떤 포켓몬에게 가르치시겠습니까? ");
       Pokemon pokemon = findByName(name);
       if (pokemon == null) {
-        String response1 = Prompt.inputString("해당 포켓몬이 없습니다, 계속 하시겠습니까?(y/N)");
-        if (response1.equalsIgnoreCase("n")) {
-          System.out.println("종료");
+        String response = Prompt.inputString("해당 포켓몬이 없습니다, 계속 하시겠습니까?(y/N) ");
+        if (!response.equalsIgnoreCase("y")) {
+          System.out.println("기술 가르치기 종료");
           return;
-        } 
-      } else { 
+        }
+      } else {
         while (true) {
           String skillName = Prompt.inputString("어떤 기술을 가르치시겠습니까? ");
           Skill skill = skillHandler.findByName(skillName);
@@ -100,10 +100,10 @@ public class PokemonHandler {
             System.out.println();
             return;
           } else {
-            String response2 = Prompt.inputString("해당 기술이 없습니다, 계속 하시겠습니까?(y/N)");
-            if (response2.equalsIgnoreCase("n")) {
+            String response = Prompt.inputString("해당 기술이 없습니다, 계속 하시겠습니까?(y/N)");
+            if (!response.equalsIgnoreCase("y")) {
               System.out.println("종료");
-              return;              
+              return;
             } //y
           }
         }
@@ -129,11 +129,8 @@ public class PokemonHandler {
     System.out.println("[포켓몬 목록]");
     for (int i = 0; i < pokemonList.size(); i++) {
       Pokemon pokemon = pokemonList.get(i);
-      System.out.printf("이름: %s, 타입: %s, 기술: %s, 아이템: %s, 잡은 날짜: %s\n", 
-          pokemon.getName(), 
-          pokemon.getType(), 
-          pokemon.getSkill(), 
-          pokemon.getItem(),
+      System.out.printf("이름: %s, 잡은 날짜: %s\n",
+          pokemon.getName(),
           pokemon.getRegisteredDate());
     }
   }

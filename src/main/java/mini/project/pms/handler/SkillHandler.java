@@ -30,12 +30,25 @@ public class SkillHandler {
 
     for (int i = 0; i < skillList.size(); i++) {
       Skill skill = skillList.get(i);
-      System.out.printf("%d, %s, %s, %d\n",
+      System.out.printf("%d, %s\n",
           skill.getNo(),
-          skill.getSkillName(),
-          skill.getType(),
-          skill.getPower());
+          skill.getSkillName());
     }
+  }
+
+  public void detail() {
+    System.out.println("[기술 상세보기]");
+    int no = Prompt.inputInt("번호? ");
+    Skill skill = findByNo(no);
+
+    if (skill == null) {
+      System.out.println("해당 번호의 기술이 없습니다.");
+      return;
+    }
+
+    System.out.printf("기술명: %s\n", skill.getSkillName());
+    System.out.printf("타입: %s\n", skill.getType());
+    System.out.printf("위력: %d\n", skill.getPower());
   }
 
   public void update() {
