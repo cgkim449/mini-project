@@ -17,11 +17,12 @@ public class App {
 
     List<Skill> skillList = new LinkedList<>();
     SkillHandler skillHandler = new SkillHandler(skillList);
-    List<Pokemon> pokemonList = new ArrayList<>();
-    PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler);
 
     List<Item> itemList = new LinkedList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
+
+    List<Pokemon> pokemonList = new ArrayList<>();
+    PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler, itemHandler);
 
     //pokemonHandler.starterPokemon();
 
@@ -39,6 +40,7 @@ public class App {
           case "/pokemon/update": pokemonHandler.update(); break;
           case "/pokemon/delete": pokemonHandler.delete(); break;
           case "/pokemon/teach": pokemonHandler.teach(); break;
+          case "/pokemon/obtain": pokemonHandler.obtain(); break;
           case "/skill/add": skillHandler.add(); break;
           case "/skill/list": skillHandler.list(); break;
           case "/skill/detail": skillHandler.detail(); break;
@@ -70,7 +72,7 @@ public class App {
     System.out.println("/pokemon/update : 포켓몬 변경");
     System.out.println("/pokemon/delete : 포켓몬 삭제");
     System.out.println("/pokemon/teach : 포켓몬에게 기술 가르침");
-    System.out.println("/pokemon/XXXX : 포켓몬이 습득한 아이템 등록");
+    System.out.println("/pokemon/obtain : 포켓몬이 습득한 아이템 등록");
     System.out.println("/skill/add : 기술 등록");
     System.out.println("/skill/list : 기술 목록 보기");
     System.out.println("/skill/update : 기술 변경");

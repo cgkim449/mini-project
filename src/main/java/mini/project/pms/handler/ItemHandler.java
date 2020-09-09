@@ -29,7 +29,7 @@ public class ItemHandler {
 
     for(int i = 0; i < itemList.size(); i++ ) {
       Item item = itemList.get(i);
-      System.out.printf("%d, %s\n",
+      System.out.printf("번호: %d, 아이템명: %s\n",
           item.getNo(),
           item.getName());
     }

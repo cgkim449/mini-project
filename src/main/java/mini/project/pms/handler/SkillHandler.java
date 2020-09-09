@@ -30,7 +30,7 @@ public class SkillHandler {
 
     for (int i = 0; i < skillList.size(); i++) {
       Skill skill = skillList.get(i);
-      System.out.printf("%d, %s\n",
+      System.out.printf("번호: %d, 기술명: %s\n",
           skill.getNo(),
           skill.getSkillName());
     }
