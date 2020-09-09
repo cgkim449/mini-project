@@ -18,58 +18,92 @@ public class PokemonHandler {
     this.itemHandler = itemHandler;
   }
 
-  /*
   public void starterPokemon() {
 
-    Pokemon starterPokemon = new Pokemon();
+    Pokemon charmander = new Pokemon();
+    charmander.setName("파이리");
+    Pokemon squirtle = new Pokemon();
+    squirtle.setName("꼬부기");
+    Pokemon bulbasaur = new Pokemon();
+    bulbasaur.setName("이상해씨");
+
+    this.pokemonList.add(charmander);
+    this.pokemonList.add(squirtle);
+    this.pokemonList.add(bulbasaur);
 
     System.out.println("[스타팅 포켓몬]");
 
-    final String CHARMANDER = "파이리";
-    final String SQUIRTLE = "꼬부기";
-    final String BULBASAUR = "이상해씨";
+    System.out.printf("%s\n%s\n%s\n",
+        this.pokemonList.get(0).getName(),
+        this.pokemonList.get(1).getName(),
+        this.pokemonList.get(2).getName());
 
-    System.out.printf("%s\n%s\n%s\n", CHARMANDER, SQUIRTLE, BULBASAUR);
+    while (true) {
+      String response = Prompt.inputString(
+          "어떤 포켓몬을 고르시겠습니까? \n> ");
+      Pokemon chosenPokemon = findByName(response);
 
-    String chosenPokemon = Prompt.inputString("어떤 포켓몬을 고르시겠습니까? \n> ");
+      if (chosenPokemon != null) {
+        switch(chosenPokemon.getName()) {
+          case "파이리":
+            chosenPokemon.setType("불");
+            chosenPokemon.setSkill("불꽃세례");
+            break;
+          case "꼬부기":
+            chosenPokemon.setType("물");
+            chosenPokemon.setSkill("물대포");
+            break;
+          case "이상해씨":
+            chosenPokemon.setType("풀");
+            chosenPokemon.setSkill("덩쿨채찍");
+            break;
+        }
 
-    switch(chosenPokemon) {
-      case CHARMANDER:
-        starterPokemon.setType("불");
-        starterPokemon.setSkill("불꽃세례");
+        String nickName = Prompt.inputString(
+            String.format("%s의 별명은? (취소: 빈 문자열)\n> ", chosenPokemon.getName()));
+
+        if (nickName.length() != 0) {
+          chosenPokemon.setName(nickName);
+        } else {
+          chosenPokemon.setName(response);
+        }
+
+        chosenPokemon.setItem("나무열매");
+        chosenPokemon.setRegisteredDate(new java.sql.Date(System.currentTimeMillis()));
+
+        pokemonList.set(0, chosenPokemon);;
+        pokemonList.remove(1);
+        pokemonList.remove(1);
+        System.out.printf("%s을(를) 받았다!\n", chosenPokemon.getName());
+        System.out.println();
         break;
-      case SQUIRTLE:
-        starterPokemon.setType("물");
-        starterPokemon.setSkill("물대포");
-        break;
-      case BULBASAUR:
-        starterPokemon.setType("풀");
-        starterPokemon.setSkill("덩쿨채찍");
-        break;
+      } else {
+        System.out.println("해당 포켓몬이 없습니다.\n");
+      }
     }
-
-    String nickName = Prompt.inputString(
-        String.format("%s의 별명은? (취소: 빈 문자열)\n", chosenPokemon));
-
-    if (nickName.length() != 0) {
-      starterPokemon.setName(nickName);
-    } else {
-      starterPokemon.setName(chosenPokemon);
-    }
-
-    starterPokemon.setItem("나무열매");
-    starterPokemon.setRegisteredDate(new java.sql.Date(System.currentTimeMillis()));
-
-    pokemonList.add(starterPokemon);
   }
-
-  */
 
   public void add() { // 포켓몬  추가
     System.out.println("[포켓몬 등록]");
-
     Pokemon pokemon = new Pokemon();
-    pokemon.setNo(Prompt.inputInt("번호? "));
+
+    // 미완성
+    int no;
+    loop1:
+    while(true) {
+      no = Prompt.inputInt("번호? ");
+      loop2:
+      for(int i = 0; i <= pokemonList.size()*100; i++) {
+        System.out.println(pokemonList.get(i).getName());
+        if(pokemonList.get(i).getNo() == no) {
+          System.out.println("입력하신 번호는 이미 사용중입니다. 다른 번호를 입력하세요.");
+          break loop2;
+        }
+        pokemon.setNo(no);
+        break loop1;
+      }
+    }
+
     pokemon.setName(Prompt.inputString("이름? "));
     pokemon.setType(Prompt.inputString("타입? "));
     pokemon.setSkill(Prompt.inputString("기술? "));
