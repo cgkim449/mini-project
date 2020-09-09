@@ -14,11 +14,11 @@ public class App {
 
   public static void main(String[] args) {
 
-    List<Pokemon> pokemonList = new LinkedList<>();
-    PokemonHandler pokemonHandler = new PokemonHandler(pokemonList);
-
     List<Skill> skillList = new LinkedList<>();
     SkillHandler skillHandler = new SkillHandler(skillList);
+
+    List<Pokemon> pokemonList = new LinkedList<>();
+    PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler);
 
     List<Item> itemList = new LinkedList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
@@ -33,6 +33,7 @@ public class App {
           case "/pokemon/detail": pokemonHandler.detail(); break;
           case "/pokemon/update": pokemonHandler.update(); break;
           case "/pokemon/delete": pokemonHandler.delete(); break;
+          case "/pokemon/teach": pokemonHandler.teach(); break;
           case "/skill/add": skillHandler.add(); break;
           case "/skill/list": skillHandler.list(); break;
           case "/skill/update": skillHandler.update(); break;
