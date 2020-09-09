@@ -1,7 +1,7 @@
 package mini.project.pms.handler;
 
 import java.util.List;
-import mini.project.pms.domail.Pokemon;
+import mini.project.pms.domain.Pokemon;
 import mini.project.util.Prompt;
 
 public class PokemonHandler {
