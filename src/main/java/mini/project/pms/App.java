@@ -23,7 +23,7 @@ public class App {
     List<Item> itemList = new LinkedList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
 
-    pokemonHandler.starterPokemon();
+    //pokemonHandler.starterPokemon();
 
     loop:
       while (true) {
@@ -32,6 +32,7 @@ public class App {
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
+          case "/help" : help(); break;
           case "/pokemon/add": pokemonHandler.add(); break;
           case "/pokemon/list": pokemonHandler.list(); break;
           case "/pokemon/detail": pokemonHandler.detail(); break;
@@ -40,6 +41,7 @@ public class App {
           case "/pokemon/teach": pokemonHandler.teach(); break;
           case "/skill/add": skillHandler.add(); break;
           case "/skill/list": skillHandler.list(); break;
+          case "/skill/detail": skillHandler.detail(); break;
           case "/skill/update": skillHandler.update(); break;
           case "/skill/delete": skillHandler.delete(); break;
           case "/item/add": itemHandler.add(); break;
@@ -59,5 +61,21 @@ public class App {
 
     Prompt.close();
   }
+
+  public static void help() {
+    System.out.println("[사용 설명서]");
+    System.out.println("/pokemon/add : 포켓몬 신규 등록");
+    System.out.println("/pokemon/list : 포켓몬 목록 보기");
+    System.out.println("/pokemon/detail : 포켓몬 상세 보기");
+    System.out.println("/pokemon/update : 포켓몬 변경");
+    System.out.println("/pokemon/delete : 포켓몬 삭제");
+    System.out.println("/pokemon/teach : 포켓몬에게 기술 가르침");
+    System.out.println("/pokemon/XXXX : 포켓몬이 습득한 아이템 등록");
+    System.out.println("/skill/add : 기술 등록");
+    System.out.println("/skill/list : 기술 목록 보기");
+    System.out.println("/skill/update : 기술 변경");
+    System.out.println("/skill/delete : 기술 삭제");
+  }
+
 }
 

@@ -6,6 +6,7 @@ public class Skill {
   private String skillName; // 기술명
   private String type; // 타입
   private int power; // 위력
+
   public int getNo() {
     return no;
   }
@@ -30,7 +31,5 @@ public class Skill {
   public void setPower(int power) {
     this.power = power;
   }
-
-
 
 }
