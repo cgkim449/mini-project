@@ -38,6 +38,10 @@ public class App {
           case "/skill/update": skillHandler.update(); break;
           case "/skill/delete": skillHandler.delete(); break;
           case "/item/add": itemHandler.add(); break;
+          case "/item/list": itemHandler.list(); break;
+          case "/item/detail": itemHandler.detail(); break;
+          case "/item/update": itemHandler.update(); break;
+          case "/item/delete": itemHandler.delete(); break;
           case "quit":
           case "exit":
             System.out.println("안녕!");

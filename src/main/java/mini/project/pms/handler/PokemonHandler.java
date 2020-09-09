@@ -123,9 +123,9 @@ public class PokemonHandler {
 
   public Pokemon findByName(String name) {
     for (int i = 0; i < pokemonList.size(); i++) {
-      Pokemon Pokemon = pokemonList.get(i);
-      if (Pokemon.getName().equals(name)) {
-        return Pokemon;
+      Pokemon pokemon = pokemonList.get(i);
+      if (pokemon.getName().equals(name)) {
+        return pokemon;
       }
     }
     return null;
