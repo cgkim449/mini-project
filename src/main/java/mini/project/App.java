@@ -5,10 +5,11 @@ package mini.project;
 
 public class App {
   public String getGreeting() {
-    return "Hello world.";
+    return "Hello world!";
   }
 
   public static void main(String[] args) {
+    System.out.println("안녕안녕?!!");
     System.out.println("2020-09-09-09-09-09-09");
     System.out.println("ㅠㅠ");
   }
