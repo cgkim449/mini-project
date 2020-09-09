@@ -44,7 +44,7 @@ public class App {
           case "/item/delete": itemHandler.delete(); break;
           case "quit":
           case "exit":
-            System.out.println("안녕!");
+            System.out.println("안녕!!");
             break loop;
           default:
             System.out.println("실행할 수 없는 명령입니다.");
