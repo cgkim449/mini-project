@@ -8,6 +8,7 @@ public class Pokemon {
     private String name; // 이름
     private String type; // 타입
     private String skill; // 기술
+    private String item;
     private Date registeredDate; // 잡은 날짜
 
     public int getNo() {
@@ -33,6 +34,12 @@ public class Pokemon {
     }
     public void setSkill(String skill) {
       this.skill = skill;
+    }
+    public String getItem() {
+      return item;
+    }
+    public void setItem(String item) {
+      this.item = item;
     }
     public Date getRegisteredDate() {
       return registeredDate;
