@@ -36,12 +36,28 @@ public class PokemonHandler {
     for (int i = 0; i < size; i++) {
       Pokemon pokemon = list[i];
       System.out.printf("%d, %s, %s, %s, %s\n",
-          pokemon.no, 
-          pokemon.name, 
-          pokemon.type, 
-          pokemon.skill, 
+          pokemon.no,
+          pokemon.name,
+          pokemon.type,
+          pokemon.skill,
           pokemon.registeredDate);
     }
+  }
+
+  public static void detail() {
+    System.out.println("[포켓몬 상세보기]");
+    int no = Prompt.inputInt("번호? ");
+    Pokemon pokemon = findByNo(no);
+
+    if (pokemon == null) {
+      System.out.println("해당 번호의 포켓몬이 없습니다.");
+      return;
+    }
+
+    System.out.printf("이름: %s\n", pokemon.name);
+    System.out.printf("타입: %s\n", pokemon.type);
+    System.out.printf("기술: %s\n", pokemon.skill);
+    System.out.printf("등록일: %s\n", pokemon.registeredDate);
   }
 
   public static Pokemon findByName(String name) {
@@ -53,4 +69,16 @@ public class PokemonHandler {
     }
     return null;
   }
+
+  private static Pokemon findByNo(int no) {
+    for(int i = 0; i < list.length; i++) {
+      Pokemon pokemon = list[i];
+      if (pokemon.no == no) {
+        return pokemon;
+      }
+    }
+    return null;
+  }
+
 }
+

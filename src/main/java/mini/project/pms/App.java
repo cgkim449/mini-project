@@ -13,12 +13,9 @@ public class App {
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
-          case "/pokemon/add":
-            PokemonHandler.add(); // 포켓몬 추가
-            break;
-          case "/pokemon/list":
-            PokemonHandler.list(); // 포켓몬 목록 출력
-            break;
+          case "/pokemon/add": PokemonHandler.add(); break;
+          case "/pokemon/list": PokemonHandler.list(); break;
+          case "/pokemon/detail": PokemonHandler.detail(); break;
           case "/skill/add":
             SkillHandler.add(); // 기술 추가
             break;
