@@ -27,6 +27,7 @@ public class App {
           case "/pokemon/detail": pokemonHandler.detail(); break;
           case "/pokemon/update": pokemonHandler.update(); break;
           case "/pokemon/delete": pokemonHandler.delete(); break;
+          case "/pokemon/teachSkill": pokemonHandler.teachSkill(); break;
           case "/skill/add": skillHandler.add(); break;
           case "/skill/list": skillHandler.list(); break;
           case "/skill/update": skillHandler.update(); break;
