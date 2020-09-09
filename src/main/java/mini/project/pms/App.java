@@ -2,7 +2,7 @@ package mini.project.pms;
 
 import java.util.LinkedList;
 import java.util.List;
-import mini.project.pms.domail.Pokemon;
+import mini.project.pms.domain.Pokemon;
 import mini.project.pms.domain.Skill;
 import mini.project.pms.handler.PokemonHandler;
 import mini.project.pms.handler.SkillHandler;

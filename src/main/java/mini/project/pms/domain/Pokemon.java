@@ -1,4 +1,4 @@
-package mini.project.pms.domail;
+package mini.project.pms.domain;
 
 import java.sql.Date;
 
