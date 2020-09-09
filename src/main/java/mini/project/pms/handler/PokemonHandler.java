@@ -12,6 +12,18 @@ public class PokemonHandler {
     this.pokemonList = list;
   }
 
+  //  public void teachSkill() {
+  //    while (true) {
+  //      String name = Prompt.inputString("어떤 포켓몬에게 가르치시겠습니까?? ");
+  //      Pokemon pokemon = findByName(name);
+  //      if (pokemon == null) {
+  //        System.out.println("해당 포켓몬이 없습니다, 계속 하시겠습니까?");
+  //        return;
+  //      }
+  //
+  //    }
+  //  }
+
   public void add() { // 포켓몬  추가
     System.out.println("[포켓몬 등록]");
 
@@ -20,6 +32,7 @@ public class PokemonHandler {
     pokemon.setName(Prompt.inputString("이름? "));
     pokemon.setType(Prompt.inputString("타입? "));
     pokemon.setSkill(Prompt.inputString("기술? "));
+    pokemon.setSkill(Prompt.inputString("아이템? "));
     pokemon.setRegisteredDate(new java.sql.Date(System.currentTimeMillis()));
 
     pokemonList.add(pokemon);
@@ -52,7 +65,8 @@ public class PokemonHandler {
     System.out.printf("이름: %s\n", pokemon.getName());
     System.out.printf("타입: %s\n", pokemon.getType());
     System.out.printf("기술: %s\n", pokemon.getSkill());
-    System.out.printf("등록일: %s\n", pokemon.getRegisteredDate());
+    System.out.printf("아이템: %s\n", pokemon.getItem());
+    System.out.printf("잡은 날짜: %s\n", pokemon.getRegisteredDate());
   }
 
   public void update() {
@@ -71,6 +85,8 @@ public class PokemonHandler {
         String.format("타입(%s)? ", pokemon.getType()));
     String skill = Prompt.inputString(
         String.format("기술(%s)? ", pokemon.getSkill()));
+    String item = Prompt.inputString(
+        String.format("아이템(%s)? ", pokemon.getSkill()));
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
@@ -97,7 +113,7 @@ public class PokemonHandler {
 
     String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
-      System.out.println("회원 삭제를 취소하였습니다.");
+      System.out.println("포켓몬 삭제를 취소하였습니다.");
       return;
     }
 
