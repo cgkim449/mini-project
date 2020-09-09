@@ -12,5 +12,6 @@ public class App {
     System.out.println("안녕안녕?!!");
     System.out.println("2020-09-09-09-09-09-09");
     System.out.println("ㅠㅠ");
+    System.out.println("ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ");
   }
 }
