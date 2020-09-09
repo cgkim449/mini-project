@@ -9,7 +9,7 @@ public class Pokemon {
   private String name; // 이름
   private String type; // 타입
   private String skill; // 기술
-  private String item;
+  private String item; // 아이템
   private Date registeredDate; // 잡은 날짜
 
   public int getNo() {

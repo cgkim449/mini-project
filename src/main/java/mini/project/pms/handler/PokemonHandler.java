@@ -15,8 +15,54 @@ public class PokemonHandler {
     this.skillHandler = skillHandler;
   }
 
+  public void starterPokemon() {
+
+    Pokemon starterPokemon = new Pokemon();
+
+    System.out.println("[스타팅 포켓몬]");
+
+    final String CHARMANDER = "파이리";
+    final String SQUIRTLE = "꼬부기";
+    final String BULBASAUR = "이상해씨";
+
+    System.out.printf("%s\n%s\n%s\n", CHARMANDER, SQUIRTLE, BULBASAUR);
+
+    String chosenPokemon = Prompt.inputString("어떤 포켓몬을 고르시겠습니까? \n> ");
+
+    switch(chosenPokemon) {
+      case CHARMANDER:
+        starterPokemon.setType("불");
+        starterPokemon.setSkill("불꽃세례");
+        break;
+      case SQUIRTLE:
+        starterPokemon.setType("물");
+        starterPokemon.setSkill("물대포");
+        break;
+      case BULBASAUR:
+        starterPokemon.setType("풀");
+        starterPokemon.setSkill("덩쿨채찍");
+        break;
+    }
+
+    String nickName = Prompt.inputString(
+        String.format("%s의 별명은? (취소: 빈 문자열)\n", chosenPokemon));
+
+    if (nickName.length() != 0) {
+      starterPokemon.setName(nickName);      
+    } else {
+      starterPokemon.setName(chosenPokemon);
+    }
+
+    starterPokemon.setItem("나무열매");
+    starterPokemon.setRegisteredDate(new java.sql.Date(System.currentTimeMillis()));
+
+    pokemonList.add(starterPokemon);
+  }
+
   public void teach() {
+
     while (true) {
+      System.out.println("[기술 가르침]");
       String name = Prompt.inputString("어떤 포켓몬에게 가르치시겠습니까? ");
       Pokemon pokemon = findByName(name);
       if (pokemon == null) {
@@ -62,13 +108,25 @@ public class PokemonHandler {
   public void list() { // 포켓몬 목록 출력
     System.out.println("[포켓몬 목록]");
 
+    String leftAlignFormat = "| %-5s | %-3s | %-8s | %-10s | %-17s |%n";
+
+    System.out.format("+--------+-----+----------+------------+-------------------+%n");
+    System.out.format("|  포켓몬    | 타입   |    기술       |     아이템       |       잡은 날짜             |%n");
+    System.out.format("+--------+-----+----------+------------+-------------------+%n");
+    Object[] pokeArrary = pokemonList.toArray();
+    for (int i = 0; i < pokeArray.length(); i++) {
+
+      System.out.format(leftAlignFormat, "파이리" + i, i * i, i, i, i);
+    }
+    System.out.format("+--------+-----+----------+------------+-------------------+%n");
+
     for (int i = 0; i < pokemonList.size(); i++) {
       Pokemon pokemon = pokemonList.get(i);
-      System.out.printf("%d, %s, %s, %s, %s\n",
-          pokemon.getNo(),
+      System.out.printf("이름 : %s, 타입 : %s, 기술 : %s, 아이템 : %s, 잡은 날짜 : %s\n",
           pokemon.getName(),
           pokemon.getType(),
           pokemon.getSkill(),
+          pokemon.getItem(),
           pokemon.getRegisteredDate());
     }
   }

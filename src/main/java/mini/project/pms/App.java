@@ -1,5 +1,6 @@
 package mini.project.pms;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import mini.project.pms.domain.Item;
@@ -16,15 +17,17 @@ public class App {
 
     List<Skill> skillList = new LinkedList<>();
     SkillHandler skillHandler = new SkillHandler(skillList);
-
-    List<Pokemon> pokemonList = new LinkedList<>();
+    List<Pokemon> pokemonList = new ArrayList<>();
     PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler);
 
     List<Item> itemList = new LinkedList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
 
+    pokemonHandler.starterPokemon();
+
     loop:
       while (true) {
+
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
