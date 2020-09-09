@@ -28,6 +28,7 @@ public class App {
     loop:
       while (true) {
 
+        System.out.println("도움이 필요하시면 '/help'를 입력하세요!");
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
