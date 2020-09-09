@@ -1,9 +1,16 @@
 package mini.project.pms.handler;
 
+import java.util.List;
 import mini.project.pms.domain.Item;
 import mini.project.util.Prompt;
 
 public class ItemHandler {
+
+  List<Item> itemList;
+
+  public ItemHandler(List<Item> list) {
+    this.itemList = list;
+  }
 
   public void add() {
     System.out.println("[아이템 등록]");
