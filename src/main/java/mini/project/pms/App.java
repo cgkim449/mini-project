@@ -2,8 +2,10 @@ package mini.project.pms;
 
 import java.util.LinkedList;
 import java.util.List;
+import mini.project.pms.domain.Item;
 import mini.project.pms.domain.Pokemon;
 import mini.project.pms.domain.Skill;
+import mini.project.pms.handler.ItemHandler;
 import mini.project.pms.handler.PokemonHandler;
 import mini.project.pms.handler.SkillHandler;
 import mini.project.util.Prompt;
@@ -14,8 +16,12 @@ public class App {
 
     List<Pokemon> pokemonList = new LinkedList<>();
     PokemonHandler pokemonHandler = new PokemonHandler(pokemonList);
+
     List<Skill> skillList = new LinkedList<>();
     SkillHandler skillHandler = new SkillHandler(skillList);
+
+    List<Item> itemList = new LinkedList<>();
+    ItemHandler itemHandler = new ItemHandler(itemList);
 
     loop:
       while (true) {
@@ -32,6 +38,7 @@ public class App {
           case "/skill/list": skillHandler.list(); break;
           case "/skill/update": skillHandler.update(); break;
           case "/skill/delete": skillHandler.delete(); break;
+          case "/item/add": itemHandler.add(); break;
           case "quit":
           case "exit":
             System.out.println("안녕!");
