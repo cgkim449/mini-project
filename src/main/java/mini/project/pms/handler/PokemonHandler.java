@@ -77,10 +77,6 @@ public class PokemonHandler {
         System.out.println("해당 포켓몬이 없습니다\n");
       }
     }
-
-
-
-
   }
 
   public void teach() {
