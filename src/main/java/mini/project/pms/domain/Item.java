@@ -5,6 +5,7 @@ public class Item {
   private int no;
   private String name;
   private String function;
+  private int price;
 
   public int getNo() {
     return no;
@@ -23,6 +24,12 @@ public class Item {
   }
   public void setFunction(String function) {
     this.function = function;
+  }
+  public int getPrice() {
+    return price;
+  }
+  public void setPrice(int price) {
+    this.price = price;
   }
 
 }
