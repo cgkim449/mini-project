@@ -9,7 +9,6 @@ public class App {
   }
 
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
-    System.out.println("김찬구!");
+    System.out.println("2020-09-09");
   }
 }
