@@ -98,6 +98,16 @@ public class SkillHandler {
     return null;
   }
 
+  public Skill findByName(String skillName) {
+    for (int i = 0; i < skillList.size(); i++) {
+      Skill skill = skillList.get(i);
+      if (skill.getSkillName().equals(skillName)) {
+        return skill;
+      }
+    }
+    return null;
+  }
+
   private int indexOf(int no) {
     for (int i = 0; i < skillList.size(); i++) {
       Skill skill = skillList.get(i);
