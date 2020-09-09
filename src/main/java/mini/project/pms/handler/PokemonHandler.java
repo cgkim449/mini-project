@@ -107,29 +107,17 @@ public class PokemonHandler {
 
   public void list() { // 포켓몬 목록 출력
     System.out.println("[포켓몬 목록]");
-
-    String leftAlignFormat = "| %-5s | %-3s | %-8s | %-10s | %-17s |%n";
-
-    System.out.format("+--------+-----+----------+------------+-------------------+%n");
-    System.out.format("|  포켓몬    | 타입   |    기술       |     아이템       |       잡은 날짜             |%n");
-    System.out.format("+--------+-----+----------+------------+-------------------+%n");
-    Object[] pokeArrary = pokemonList.toArray();
-    for (int i = 0; i < pokeArray.length(); i++) {
-
-      System.out.format(leftAlignFormat, "파이리" + i, i * i, i, i, i);
-    }
-    System.out.format("+--------+-----+----------+------------+-------------------+%n");
-
     for (int i = 0; i < pokemonList.size(); i++) {
       Pokemon pokemon = pokemonList.get(i);
-      System.out.printf("이름 : %s, 타입 : %s, 기술 : %s, 아이템 : %s, 잡은 날짜 : %s\n",
-          pokemon.getName(),
-          pokemon.getType(),
-          pokemon.getSkill(),
+      System.out.printf("이름: %s, 타입: %s, 기술: %s, 아이템: %s, 잡은 날짜: %s\n", 
+          pokemon.getName(), 
+          pokemon.getType(), 
+          pokemon.getSkill(), 
           pokemon.getItem(),
           pokemon.getRegisteredDate());
     }
   }
+
 
   public void detail() {
     System.out.println("[포켓몬 상세보기]");
