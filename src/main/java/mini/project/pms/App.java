@@ -24,7 +24,7 @@ public class App {
     List<Pokemon> pokemonList = new ArrayList<>();
     PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler, itemHandler);
 
-    //    pokemonHandler.starterPokemon();
+    pokemonHandler.starterPokemon();
 
     loop:
       while (true) {
