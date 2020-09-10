@@ -15,9 +15,27 @@ public class SkillHandler {
 
   public void add() {
     System.out.println("[기술 등록]");
-
     Skill skill = new Skill();
-    skill.setNo(Prompt.inputInt("번호? "));
+
+    while(true) {
+      int no = Prompt.inputInt("번호? ");
+      boolean hasNumber = false;
+
+      for(int i = 0; i < skillList.size(); i++) {
+        skill = skillList.get(i);
+        if(skill.getNo() == no) {
+          System.out.println("입력하신 번호는 이미 사용중입니다.");
+          hasNumber = true;
+          break;
+        }
+      }
+      if(!hasNumber) {
+        skill = new Skill();
+        skill.setNo(no);
+        break;
+      }
+    }
+
     skill.setSkillName(Prompt.inputString("기술명? "));
     skill.setType(Prompt.inputString("타입? "));
     skill.setPower(Prompt.inputInt("위력? "));
