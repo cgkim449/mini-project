@@ -112,48 +112,68 @@ public class ItemHandler {
 
   public void add() {
     System.out.println("[아이템 등록]");
-
     Item item = new Item();
-    item.setNo(Prompt.inputInt("번호? "));
-    loop : while(true) {
-      System.out.println("어떤 아이템을 등록하시겠습니까? ");
-      System.out.println("나무열매: 1");
-      System.out.println("이상한 사탕: 2");
-      System.out.println("타우린: 3");
-      System.out.println("사포닌: 4");
-      final int BERRY = 1;
-      final int CANDY = 2;
-      final int TAURINE = 3;
-      final int SAPONIN = 4;
-      int response = Prompt.inputInt("(번호 입력) > ");
 
-      if (response > 4 || response <1) {
-        System.out.println();
-        System.out.println("다시 입력해주세요");
-      } else {
-        switch (response) {
-          case BERRY:
-            item.setFunction("HP 10 회복");
-            item.setPrice(10);
-            item.setName("나무열매");
-            break;
-          case CANDY:
-            item.setFunction("레벨 1 증가");
-            item.setPrice(100);
-            item.setName("이상한 사탕");
-            break;
-          case TAURINE:
-            item.setFunction("공격력 1 증가");
-            item.setPrice(50);
-            item.setName("타우린");
-            break;
-          case SAPONIN:
-            item.setFunction("방어력 1 증가");
-            item.setPrice(40);
-            item.setName("사포닌");
-            break;
+    final int BERRY = 1;
+    final int CANDY = 2;
+    final int TAURINE = 3;
+    final int SAPONIN = 4;
+
+    while(true) {
+      int no = Prompt.inputInt("번호? ");
+      boolean hasNumber = false;
+
+      for(int i = 0; i < itemList.size(); i++) {
+        item = itemList.get(i);
+        if(item.getNo() == no) {
+          System.out.println("입력하신 번호는 이미 사용중입니다.");
+          hasNumber = true;
+          break;
         }
-        break loop;
+      }
+      if(!hasNumber) {
+        item = new Item();
+        item.setNo(no);
+
+        loop : while(true) {
+          System.out.println("어떤 아이템을 등록하시겠습니까? ");
+          System.out.println("나무열매: 1");
+          System.out.println("이상한 사탕: 2");
+          System.out.println("타우린: 3");
+          System.out.println("사포닌: 4");
+          int response = Prompt.inputInt("(번호 입력) > ");
+
+          if (response > 4 || response < 1) {
+            System.out.println("다시 입력해주세요.");
+          } else {
+            switch (response) {
+              case BERRY:
+                item.setFunction("HP 10 회복");
+                item.setPrice(10);
+                item.setName("나무열매");
+                break;
+              case CANDY:
+                item.setFunction("레벨 1 증가");
+                item.setPrice(100);
+                item.setName("이상한 사탕");
+                break;
+              case TAURINE:
+                item.setFunction("공격력 1 증가");
+                item.setPrice(50);
+                item.setName("타우린");
+                break;
+              case SAPONIN:
+                item.setFunction("방어력 1 증가");
+                item.setPrice(40);
+                item.setName("사포닌");
+                break;
+            }
+            break loop;
+          }
+          break;
+        }
+
+        break;
       }
     }
     System.out.printf("%s이(가) 등록되었습니다", item.getName());
