@@ -197,7 +197,7 @@ public class PokemonHandler {
     System.out.println("포켓몬을 삭제하였습니다.");
   }
 
-  public void teach() {
+  public void learnSkill() {
     System.out.println("[기술 가르침]");
 
     StringBuilder skills = new StringBuilder();
@@ -237,7 +237,7 @@ public class PokemonHandler {
     }
   }
 
-  public void obtain() {
+  public void getItem() {
 
     StringBuilder items = new StringBuilder();
     Pokemon pokemon = new Pokemon();
