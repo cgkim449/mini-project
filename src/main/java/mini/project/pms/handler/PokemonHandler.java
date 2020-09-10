@@ -87,22 +87,24 @@ public class PokemonHandler {
     System.out.println("[포켓몬 등록]");
     Pokemon pokemon = new Pokemon();
 
-    // 미완성
-    int no;
-    loop1:
-    while(true) {
-      no = Prompt.inputInt("번호? ");
-      loop2:
-      for(int i = 0; i <= pokemonList.size()*100; i++) {
-        System.out.println(pokemonList.get(i).getName());
-        if(pokemonList.get(i).getNo() == no) {
-          System.out.println("입력하신 번호는 이미 사용중입니다. 다른 번호를 입력하세요.");
-          break loop2;
+      while(true) {
+        int no = Prompt.inputInt("번호? ");
+        boolean hasNumber = false;
+
+        for(int i = 0; i < pokemonList.size(); i++) {
+          pokemon = pokemonList.get(i);
+          if(pokemon.getNo() == no) {
+            System.out.println("입력하신 번호는 이미 사용중입니다.");
+            hasNumber = true;
+            break;
+          }
         }
-        pokemon.setNo(no);
-        break loop1;
+        if(!hasNumber) {
+          pokemon = new Pokemon();
+          pokemon.setNo(no);
+          break;
+        }
       }
-    }
 
     pokemon.setName(Prompt.inputString("이름? "));
     pokemon.setType(Prompt.inputString("타입? "));
@@ -112,6 +114,7 @@ public class PokemonHandler {
 
     pokemonList.add(pokemon);
   }
+
 
   public void list() { // 포켓몬 목록 출력
     System.out.println("[포켓몬 목록]");
