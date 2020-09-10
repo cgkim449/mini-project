@@ -210,7 +210,7 @@ public class PokemonHandler {
         System.out.println("해당 번호의 포켓몬이 없습니다.");
         String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
         if (!response.equalsIgnoreCase("y")) {
-          System.out.println("기술 가르치기를 취소합니다.");
+          System.out.println("기술 배우기를 취소합니다.");
           return;
         }
       } else {
@@ -219,9 +219,11 @@ public class PokemonHandler {
           skills.append(pokemon.getSkill());
 
           System.out.printf("%s(이)가 기술을 배웁니다.\n", name);
-          String skillName = Prompt.inputString("어떤 기술을 가르치시겠습니까? ");
-          Skill skill = skillHandler.findByName(skillName);
+
+          int skillNo = Prompt.inputInt("어떤 기술을 배웁니까?(번호 입력) ");
+          Skill skill = skillHandler.findByNo(skillNo);
           if (skill != null) {
+            String skillName = skill.getSkillName();
             skills.append(", ");
             skills.append(skillName);
             pokemon.setSkill(skills.toString());
@@ -231,7 +233,7 @@ public class PokemonHandler {
           } else {
             String response = Prompt.inputString("해당 기술이 없습니다, 계속 하시겠습니까?(y/N)");
             if (!response.equalsIgnoreCase("y")) {
-              System.out.println("기술 가르치기를 취소합니다.");
+              System.out.println("기술 배우기를 취소합니다.");
               return;
             } //y
           }
@@ -263,9 +265,12 @@ public class PokemonHandler {
           items.append(pokemon.getItem());
 
           System.out.printf("%s(이)가 아이템을 습득합니다.\n", name);
-          String itemName = Prompt.inputString("어떤 아이템을 습득했습니까? ");
-          Item item = itemHandler.findByName(itemName);
+
+          int itemNo = Prompt.inputInt("어떤 기술을 배웁니까?(번호 입력) ");
+          Item item = itemHandler.findByNo(itemNo);
+
           if (item != null) {
+            String itemName = item.getName();
             items.append(", ");
             items.append(itemName);
             pokemon.setItem(items.toString());
