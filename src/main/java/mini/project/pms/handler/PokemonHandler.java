@@ -196,7 +196,6 @@ public class PokemonHandler {
     pokemonList.remove(index);
     System.out.println("포켓몬을 삭제하였습니다.");
   }
-
   public void learnSkill() {
     System.out.println("[기술 가르침]");
 
@@ -253,7 +252,7 @@ public class PokemonHandler {
 
       if (pokemon == null) {
         System.out.println("해당 번호의 포켓몬이 없습니다.");
-        String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
+        String response = Prompt.inputString("계속 하시겠습니까?(y/N) ");
         if (!response.equalsIgnoreCase("y")) {
           System.out.println("습득한 아이템 등록을 취소합니다.");
           return;

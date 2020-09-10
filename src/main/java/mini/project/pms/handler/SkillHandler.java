@@ -165,7 +165,7 @@ public class SkillHandler {
     System.out.println("기술을 삭제하였습니다.");
   }
 
-  private Skill findByNo(int no) {
+  public Skill findByNo(int no) {
     for (int i = 0; i < skillList.size(); i++) {
       Skill skill = skillList.get(i);
       if (skill.getNo() == no) {

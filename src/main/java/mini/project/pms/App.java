@@ -24,7 +24,8 @@ public class App {
     List<Pokemon> pokemonList = new ArrayList<>();
     PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler, itemHandler);
 
-    //    pokemonHandler.starterPokemon();
+    pokemonHandler.starterPokemon();
+    help();
 
     loop:
       while (true) {
@@ -85,6 +86,7 @@ public class App {
     System.out.println("/item/update : 아이템 변경");
     System.out.println("/item/delete : 아이템 삭제");
     System.out.println("/item/choose : 아이템 선택");
+    System.out.println();
   }
 
 }

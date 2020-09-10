@@ -266,7 +266,7 @@ public class ItemHandler {
     return null;
   }
 
-  private Item findByNo(int no) {
+  public Item findByNo(int no) {
     for(int i = 0; i < itemList.size(); i++) {
       Item item = itemList.get(i);
       if (item.getNo() == no) {
