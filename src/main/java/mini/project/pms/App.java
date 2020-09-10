@@ -23,7 +23,7 @@ public class App {
     List<Item> itemList = new LinkedList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
 
-    //pokemonHandler.starterPokemon();
+    pokemonHandler.starterPokemon();
 
     loop:
       while (true) {
