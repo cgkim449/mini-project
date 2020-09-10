@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Pokemon {
 
-  public static String p;
   private int no; // 번호
   private String name; // 이름
   private String type; // 타입
