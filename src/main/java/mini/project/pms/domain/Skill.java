@@ -4,7 +4,7 @@ public class Skill {
 
   private int no; // 번호
   private String skillName; // 기술명
-  private String type; // 타입
+  private String detail; // 설명
   private int power; // 위력
 
   public int getNo() {
@@ -19,11 +19,11 @@ public class Skill {
   public void setSkillName(String skillName) {
     this.skillName = skillName;
   }
-  public String getType() {
-    return type;
+  public String getDetail() {
+    return detail;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setDetail(String detail) {
+    this.detail = detail;
   }
   public int getPower() {
     return power;
