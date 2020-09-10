@@ -72,8 +72,8 @@ public class App {
     System.out.println("/pokemon/detail : 포켓몬 상세 조회");
     System.out.println("/pokemon/update : 포켓몬 변경");
     System.out.println("/pokemon/delete : 포켓몬 삭제");
-    System.out.println("/pokemon/teach : 포켓몬에게 기술 가르침");
-    System.out.println("/pokemon/obtain : 포켓몬이 습득한 아이템 등록");
+    System.out.println("/pokemon/learnSkill : 포켓몬에게 기술 가르침");
+    System.out.println("/pokemon/getItem : 포켓몬이 습득한 아이템 등록");
     System.out.println("/skill/add : 기술 등록");
     System.out.println("/skill/list : 기술 목록 조회");
     System.out.println("/skill/detail : 기술 상세 조회");

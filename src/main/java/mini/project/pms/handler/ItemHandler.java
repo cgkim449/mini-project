@@ -17,8 +17,8 @@ public class ItemHandler {
 
     Item chosenItem = new Item();
 
+    System.out.println("[아이템 선택]");
     loop1 : while (true) {
-      System.out.println("[아이템 선택]");
       String name = Prompt.inputString("어떤 아이템을 사용하시겠습니까? ");
       chosenItem = findByName(name);
       if (chosenItem == null) {
@@ -92,10 +92,10 @@ public class ItemHandler {
             case THROW:
               String response1 = Prompt.inputString("정말 버리시겠습니까? (y/N)\n");
               if(!response1.equalsIgnoreCase("y")) {
-                System.out.printf("%s(을)를 버렸습니다\n", chosenItem.getName());
+                System.out.printf("버리지 않고 끝났다\n", chosenItem.getName());
                 return;
               } else {
-                System.out.print("버리지 않고 끝났다\n");
+                System.out.print("%s(을)를 버렸습니다\n");
                 return;
               }
             case QUIT:
@@ -128,6 +128,7 @@ public class ItemHandler {
       int response = Prompt.inputInt("(번호 입력) > ");
 
       if (response > 4 || response <1) {
+        System.out.println();
         System.out.println("다시 입력해주세요");
       } else {
         switch (response) {
@@ -155,6 +156,8 @@ public class ItemHandler {
         break loop;
       }
     }
+    System.out.printf("%s이(가) 등록되었습니다", item.getName());
+    System.out.println();
     itemList.add(item);
   }
 

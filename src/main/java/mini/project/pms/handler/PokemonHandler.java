@@ -78,7 +78,7 @@ public class PokemonHandler {
         System.out.println();
         break;
       } else {
-        System.out.println("해당 포켓몬이 없습니다.\n");
+        System.out.println("다시 입력해주세요\n");
       }
     }
   }
@@ -87,24 +87,24 @@ public class PokemonHandler {
     System.out.println("[포켓몬 등록]");
     Pokemon pokemon = new Pokemon();
 
-      while(true) {
-        int no = Prompt.inputInt("번호? ");
-        boolean hasNumber = false;
+    while(true) {
+      int no = Prompt.inputInt("번호? ");
+      boolean hasNumber = false;
 
-        for(int i = 0; i < pokemonList.size(); i++) {
-          pokemon = pokemonList.get(i);
-          if(pokemon.getNo() == no) {
-            System.out.println("입력하신 번호는 이미 사용중입니다.");
-            hasNumber = true;
-            break;
-          }
-        }
-        if(!hasNumber) {
-          pokemon = new Pokemon();
-          pokemon.setNo(no);
+      for(int i = 0; i < pokemonList.size(); i++) {
+        pokemon = pokemonList.get(i);
+        if(pokemon.getNo() == no) {
+          System.out.println("입력하신 번호는 이미 사용중입니다.");
+          hasNumber = true;
           break;
         }
       }
+      if(!hasNumber) {
+        pokemon = new Pokemon();
+        pokemon.setNo(no);
+        break;
+      }
+    }
 
     pokemon.setName(Prompt.inputString("이름? "));
     pokemon.setType(Prompt.inputString("타입? "));
@@ -207,14 +207,14 @@ public class PokemonHandler {
       int no = Prompt.inputInt("어떤 포켓몬이 기술을 배웁니까?(번호 입력) ");
       pokemon = findByNo(no);
 
-        if (pokemon == null) {
-          System.out.println("해당 번호의 포켓몬이 없습니다.");
-          String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
-          if (!response.equalsIgnoreCase("y")) {
-            System.out.println("기술 가르치기를 취소합니다.");
-            return;
-          }
-        } else {
+      if (pokemon == null) {
+        System.out.println("해당 번호의 포켓몬이 없습니다.");
+        String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
+        if (!response.equalsIgnoreCase("y")) {
+          System.out.println("기술 가르치기를 취소합니다.");
+          return;
+        }
+      } else {
         while (true) {
           String name = pokemon.getName();
           skills.append(pokemon.getSkill());
