@@ -204,18 +204,22 @@ public class PokemonHandler {
     Pokemon pokemon = new Pokemon();
 
     while (true) {
-      String name = Prompt.inputString("어떤 포켓몬에게 가르치시겠습니까? ");
-      pokemon = findByName(name);
-      if (pokemon == null) {
-        String response = Prompt.inputString("해당 포켓몬이 없습니다, 계속 하시겠습니까?(y/N) ");
-        if (!response.equalsIgnoreCase("y")) {
-          System.out.println("기술 가르치기를 취소합니다.");
-          return;
-        }
-      } else {
+      int no = Prompt.inputInt("어떤 포켓몬이 기술을 배웁니까?(번호 입력) ");
+      pokemon = findByNo(no);
+
+        if (pokemon == null) {
+          System.out.println("해당 번호의 포켓몬이 없습니다.");
+          String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
+          if (!response.equalsIgnoreCase("y")) {
+            System.out.println("기술 가르치기를 취소합니다.");
+            return;
+          }
+        } else {
         while (true) {
+          String name = pokemon.getName();
           skills.append(pokemon.getSkill());
 
+          System.out.printf("%s(이)가 기술을 배웁니다.\n", name);
           String skillName = Prompt.inputString("어떤 기술을 가르치시겠습니까? ");
           Skill skill = skillHandler.findByName(skillName);
           if (skill != null) {
@@ -238,24 +242,28 @@ public class PokemonHandler {
   }
 
   public void getItem() {
+    System.out.println("[아이템 습득]");
 
     StringBuilder items = new StringBuilder();
     Pokemon pokemon = new Pokemon();
 
     while (true) {
-      System.out.println("[아이템 습득]");
-      String name = Prompt.inputString("어떤 포켓몬이 아이템을 습득했습니까? ");
-      pokemon = findByName(name);
+      int no = Prompt.inputInt("어떤 포켓몬이 아이템을 습득했습니까?(번호 입력) ");
+      pokemon = findByNo(no);
+
       if (pokemon == null) {
-        String response = Prompt.inputString("해당 포켓몬이 없습니다, 다시 시도하시겠습니까?(y/N) ");
+        System.out.println("해당 번호의 포켓몬이 없습니다.");
+        String response = Prompt.inputString("계속 하시겠습니까?(y/N)");
         if (!response.equalsIgnoreCase("y")) {
           System.out.println("습득한 아이템 등록을 취소합니다.");
           return;
         }
       } else {
         while (true) {
+          String name = pokemon.getName();
           items.append(pokemon.getItem());
 
+          System.out.printf("%s(이)가 아이템을 습득합니다.\n", name);
           String itemName = Prompt.inputString("어떤 아이템을 습득했습니까? ");
           Item item = itemHandler.findByName(itemName);
           if (item != null) {
