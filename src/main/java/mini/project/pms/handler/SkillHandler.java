@@ -17,6 +17,12 @@ public class SkillHandler {
     System.out.println("[기술 등록]");
     Skill skill = new Skill();
 
+    final int BLOCKING = 1;
+    final int ELECTRIC_SHOCK = 2;
+    final int WATERBOMB = 3;
+    final int MAKE_SLEEPY = 4;
+    final int DISTRACTE = 5;
+
     while(true) {
       int no = Prompt.inputInt("번호? ");
       boolean hasNumber = false;
@@ -32,14 +38,54 @@ public class SkillHandler {
       if(!hasNumber) {
         skill = new Skill();
         skill.setNo(no);
+
+        loop:
+        while(true) {
+          System.out.println("어떤 기술을 등록하시겠습니까?");
+          System.out.println("블록킹: 1");
+          System.out.println("전기 충격: 2");
+          System.out.println("물대포 쏘기: 3");
+          System.out.println("잠들게 하기: 4");
+          System.out.println("산만하게 하기: 5");
+
+          int response = Prompt.inputInt("(번호 입력) > ");
+          if (response > 5 || response < 1) {
+            System.out.println("다시 입력해주세요.");
+          } else {
+            switch (response) {
+              case BLOCKING:
+                skill.setSkillName("블록킹");
+                skill.setDetail("다른 포켓몬의 공격을 방어");
+                skill.setPower(30);
+                break;
+              case ELECTRIC_SHOCK:
+                skill.setSkillName("전기 충격");
+                skill.setDetail("다른 포켓몬에게 전기 충격을 가함");
+                skill.setPower(100);
+                break;
+              case WATERBOMB:
+                skill.setSkillName("물대포 쏘기");
+                skill.setDetail("다른 포켓몬에게 물대포를 쏨, 불을 끔");
+                skill.setPower(70);
+                break;
+              case MAKE_SLEEPY:
+                skill.setSkillName("잠들게 하기");
+                skill.setDetail("다른 포켓몬을 잠들게 함");
+                skill.setPower(60);
+                break;
+              case DISTRACTE:
+                skill.setSkillName("산만하게 하기");
+                skill.setDetail("다른 포켓몬의 주의를 분산시킴");
+                skill.setPower(45);
+                break;
+            }
+            break loop;
+          }
+          break;
+        }
         break;
       }
     }
-
-    skill.setSkillName(Prompt.inputString("기술명? "));
-    skill.setType(Prompt.inputString("타입? "));
-    skill.setPower(Prompt.inputInt("위력? "));
-
     skillList.add(skill);
   }
 
@@ -65,7 +111,7 @@ public class SkillHandler {
     }
 
     System.out.printf("기술명: %s\n", skill.getSkillName());
-    System.out.printf("타입: %s\n", skill.getType());
+    System.out.printf("상세: %s\n", skill.getDetail());
     System.out.printf("위력: %d\n", skill.getPower());
   }
 
@@ -81,8 +127,8 @@ public class SkillHandler {
 
     String skillName = Prompt.inputString(
         String.format("기술명(%s)? ", skill.getSkillName()));
-    String type = Prompt.inputString(
-        String.format("타입(%s)? ", skill.getType()));
+    String detail = Prompt.inputString(
+        String.format("상세(%s)? ", skill.getDetail()));
     int power = Prompt.inputInt(
         String.format("위력(%s)? ", skill.getPower()));
 
@@ -93,7 +139,7 @@ public class SkillHandler {
     }
 
     skill.setSkillName(skillName);
-    skill.setType(type);
+    skill.setDetail(detail);
     skill.setPower(power);
 
     System.out.println("기술을 변경하였습니다.");
