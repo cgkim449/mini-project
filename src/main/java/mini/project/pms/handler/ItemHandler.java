@@ -2,6 +2,7 @@ package mini.project.pms.handler;
 
 import java.util.List;
 import mini.project.pms.domain.Item;
+import mini.project.pms.domain.Pokemon;
 import mini.project.util.Prompt;
 
 public class ItemHandler {
@@ -12,15 +13,124 @@ public class ItemHandler {
     this.itemList = list;
   }
 
+  public void choose(PokemonHandler pokemonHandler) { // 의존객체를 파라미터로 주입
+
+    Item chosenItem = new Item();
+
+    loop1 : while (true) {
+      System.out.println("[아이템 선택]");
+      String name = Prompt.inputString("어떤 아이템을 사용하시겠습니까? ");
+      chosenItem = findByName(name);
+      if (chosenItem == null) {
+        String response = Prompt.inputString("해당 아이템이 없습니다, 계속 하시겠습니까?(y/N) ");
+        if (!response.equalsIgnoreCase("y")) {
+          System.out.println("아이템 선택을 취소합니다.");
+          return;
+        }
+      } else {
+        loop :while (true) {
+          System.out.println("사용하다: 1");
+          System.out.println("지니게하다: 2");
+          System.out.println("버리다: 3");
+          System.out.println("그만두다: 4");
+          final int USE = 1;
+          final int GIVE = 2;
+          final int THROW = 3;
+          final int QUIT = 4;
+          int response = Prompt.inputInt("번호 입력 > ");
+
+          switch (response) {
+            case USE:
+              Pokemon chosenPokemon = new Pokemon();
+              while (true) {
+                String name1 = Prompt.inputString("어떤 포켓몬에게 사용하시겠습니까? ");
+                chosenPokemon = pokemonHandler.findByName(name1);
+                if (chosenPokemon == null) {
+                  String response1 = Prompt.inputString(
+                      "해당 포켓몬이 없습니다, 계속 하시겠습니까?(y/N) ");
+                  if (!response1.equalsIgnoreCase("y")) {
+                    System.out.println("아이템 선택을 취소합니다.");
+                    return;
+                  }
+                } else {
+                  switch (chosenItem.getName()) {
+                    case "나무열매":
+                      System.out.printf("%s는 hp를 10 회복했다\n", chosenPokemon.getName());
+                      return;
+                    case "이상한사탕":
+                      System.out.printf("%s는 레벨이 1 올랐다!\n", chosenPokemon.getName());
+                      return;
+                    case "타우린":
+                      System.out.printf("%s는 공격력이 1 올랐다!\n", chosenPokemon.getName());
+                      return;
+                    case "사포닌":
+                      System.out.printf("%s는 방어력이 1이 올랐다!\n", chosenPokemon.getName());
+                      return;
+                  }
+                }
+              }
+            case GIVE:
+              while (true) {
+                String name1 = Prompt.inputString("어떤 포켓몬에게 주시겠습니까? ");
+                chosenPokemon = pokemonHandler.findByName(name1);
+                if (chosenPokemon == null) {
+                  String response1 = Prompt.inputString(
+                      "해당 포켓몬이 없습니다, 계속 하시겠습니까?(y/N) ");
+                  if (!response1.equalsIgnoreCase("y")) {
+                    System.out.println("아이템 선택을 취소합니다.");
+                    return;
+                  }
+                } else {
+                  System.out.printf("%s에게 %s(을)를 지니게했다!\n",chosenPokemon.getName(),chosenItem.getName());
+                  return;
+                }
+              }
+            case THROW:
+              String response1 = Prompt.inputString("정말 버리시겠습니까? (y/N)\n");
+              if(!response1.equalsIgnoreCase("y")) {
+                System.out.printf("%s(을)를 버렸습니다\n", chosenItem.getName());
+                return;
+              } else {
+                System.out.print("버리지 않고 끝났다\n");
+                return;
+              }
+            case QUIT:
+              System.out.print("아이템 선택을 취소합니다\n");
+              return;
+            default:
+              System.out.print("다시 입력해주세요\n");
+              continue loop;
+          }
+        }
+      }
+    }
+  }
+
   public void add() {
     System.out.println("[아이템 등록]");
 
     Item item = new Item();
     item.setNo(Prompt.inputInt("번호? "));
     item.setName(Prompt.inputString("아이템명? "));
-    item.setFunction(Prompt.inputString("기능? "));
-    item.setPrice(Prompt.inputInt("가격? "));
 
+    switch (item.getName()) {
+      case "나무열매":
+        item.setFunction("HP 10 회복");
+        item.setPrice(10);
+        break;
+      case "이상한 사탕":
+        item.setFunction("레벨 1 증가");
+        item.setPrice(100);
+        break;
+      case "타우린":
+        item.setFunction("공격력 1 증가");
+        item.setPrice(50);
+        break;
+      case "사포닌":
+        item.setFunction("방어력 1 증가");
+        item.setPrice(40);
+        break;
+    }
     itemList.add(item);
   }
 

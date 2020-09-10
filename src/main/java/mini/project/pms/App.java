@@ -18,7 +18,7 @@ public class App {
     List<Skill> skillList = new LinkedList<>();
     SkillHandler skillHandler = new SkillHandler(skillList);
 
-    List<Item> itemList = new LinkedList<>();
+    List<Item> itemList = new ArrayList<>();
     ItemHandler itemHandler = new ItemHandler(itemList);
 
     List<Pokemon> pokemonList = new ArrayList<>();
@@ -51,6 +51,7 @@ public class App {
           case "/item/detail": itemHandler.detail(); break;
           case "/item/update": itemHandler.update(); break;
           case "/item/delete": itemHandler.delete(); break;
+          case "/item/choose": itemHandler.choose(pokemonHandler); break;
           case "quit":
           case "exit":
             System.out.println("안녕!!");
@@ -83,6 +84,7 @@ public class App {
     System.out.println("/item/detail : 아이템 상세 조회");
     System.out.println("/item/update : 아이템 변경");
     System.out.println("/item/delete : 아이템 삭제");
+    System.out.println("/item/choose : 아이템 선택");
   }
 
 }
