@@ -198,12 +198,12 @@ public class PokemonHandler {
   }
 
   public void teach() {
+    System.out.println("[기술 가르침]");
 
     StringBuilder skills = new StringBuilder();
     Pokemon pokemon = new Pokemon();
 
     while (true) {
-      System.out.println("[기술 가르침]");
       String name = Prompt.inputString("어떤 포켓몬에게 가르치시겠습니까? ");
       pokemon = findByName(name);
       if (pokemon == null) {
