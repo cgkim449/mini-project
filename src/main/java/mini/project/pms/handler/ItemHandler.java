@@ -55,16 +55,16 @@ public class ItemHandler {
                 } else {
                   switch (chosenItem.getName()) {
                     case "나무열매":
-                      System.out.printf("%s는 hp를 10 회복했다\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 hp를 10 회복했다\n", chosenPokemon.getName());
                       return;
                     case "이상한사탕":
-                      System.out.printf("%s는 레벨이 1 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 레벨이 1 올랐다!\n", chosenPokemon.getName());
                       return;
                     case "타우린":
-                      System.out.printf("%s는 공격력이 1 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 공격력이 1 올랐다!\n", chosenPokemon.getName());
                       return;
                     case "사포닌":
-                      System.out.printf("%s는 방어력이 1이 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 방어력이 1이 올랐다!\n", chosenPokemon.getName());
                       return;
                   }
                 }
