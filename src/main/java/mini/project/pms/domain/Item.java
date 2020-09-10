@@ -6,6 +6,7 @@ public class Item {
   private String name;
   private String function;
   private int price;
+  private String owner;
 
   public int getNo() {
     return no;
@@ -30,6 +31,12 @@ public class Item {
   }
   public void setPrice(int price) {
     this.price = price;
+  }
+  public String getOwner() {
+    return owner;
+  }
+  public void setOwner(String owner) {
+    this.owner = owner;
   }
 
 }
