@@ -24,7 +24,7 @@ public class App {
     List<Pokemon> pokemonList = new ArrayList<>();
     PokemonHandler pokemonHandler = new PokemonHandler(pokemonList, skillHandler, itemHandler);
 
-    pokemonHandler.starterPokemon();
+    //    pokemonHandler.starterPokemon();
 
     loop:
       while (true) {
@@ -39,8 +39,8 @@ public class App {
           case "/pokemon/detail": pokemonHandler.detail(); break;
           case "/pokemon/update": pokemonHandler.update(); break;
           case "/pokemon/delete": pokemonHandler.delete(); break;
-          case "/pokemon/teach": pokemonHandler.teach(); break;
-          case "/pokemon/obtain": pokemonHandler.obtain(); break;
+          case "/pokemon/teach": pokemonHandler.learnSkill(); break;
+          case "/pokemon/obtain": pokemonHandler.getItem(); break;
           case "/skill/add": skillHandler.add(); break;
           case "/skill/list": skillHandler.list(); break;
           case "/skill/detail": skillHandler.detail(); break;

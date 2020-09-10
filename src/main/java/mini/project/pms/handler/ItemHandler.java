@@ -37,8 +37,12 @@ public class ItemHandler {
           final int GIVE = 2;
           final int THROW = 3;
           final int QUIT = 4;
-          int response = Prompt.inputInt("번호 입력 > ");
+          int response = Prompt.inputInt("(번호 입력) > ");
 
+          if (response < 1 || response > 5) {
+            System.out.println("다시 입력해주세요");
+            continue loop;
+          }
           switch (response) {
             case USE:
               Pokemon chosenPokemon = new Pokemon();
@@ -55,16 +59,16 @@ public class ItemHandler {
                 } else {
                   switch (chosenItem.getName()) {
                     case "나무열매":
-                      System.out.printf("%s는 hp를 10 회복했다\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 hp를 10 회복했다\n", chosenPokemon.getName());
                       return;
                     case "이상한사탕":
-                      System.out.printf("%s는 레벨이 1 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 레벨이 1 올랐다!\n", chosenPokemon.getName());
                       return;
                     case "타우린":
-                      System.out.printf("%s는 공격력이 1 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 공격력이 1 올랐다!\n", chosenPokemon.getName());
                       return;
                     case "사포닌":
-                      System.out.printf("%s는 방어력이 1이 올랐다!\n", chosenPokemon.getName());
+                      System.out.printf("%s(은)는 방어력이 1이 올랐다!\n", chosenPokemon.getName());
                       return;
                   }
                 }
@@ -111,25 +115,45 @@ public class ItemHandler {
 
     Item item = new Item();
     item.setNo(Prompt.inputInt("번호? "));
-    item.setName(Prompt.inputString("아이템명? "));
+    loop : while(true) {
+      System.out.println("어떤 아이템을 등록하시겠습니까? ");
+      System.out.println("나무열매: 1");
+      System.out.println("이상한 사탕: 2");
+      System.out.println("타우린: 3");
+      System.out.println("사포닌: 4");
+      final int BERRY = 1;
+      final int CANDY = 2;
+      final int TAURINE = 3;
+      final int SAPONIN = 4;
+      int response = Prompt.inputInt("(번호 입력) > ");
 
-    switch (item.getName()) {
-      case "나무열매":
-        item.setFunction("HP 10 회복");
-        item.setPrice(10);
-        break;
-      case "이상한 사탕":
-        item.setFunction("레벨 1 증가");
-        item.setPrice(100);
-        break;
-      case "타우린":
-        item.setFunction("공격력 1 증가");
-        item.setPrice(50);
-        break;
-      case "사포닌":
-        item.setFunction("방어력 1 증가");
-        item.setPrice(40);
-        break;
+      if (response > 4 || response <1) {
+        System.out.println("다시 입력해주세요");
+      } else {
+        switch (response) {
+          case BERRY:
+            item.setFunction("HP 10 회복");
+            item.setPrice(10);
+            item.setName("나무열매");
+            break;
+          case CANDY:
+            item.setFunction("레벨 1 증가");
+            item.setPrice(100);
+            item.setName("이상한 사탕");
+            break;
+          case TAURINE:
+            item.setFunction("공격력 1 증가");
+            item.setPrice(50);
+            item.setName("타우린");
+            break;
+          case SAPONIN:
+            item.setFunction("방어력 1 증가");
+            item.setPrice(40);
+            item.setName("사포닌");
+            break;
+        }
+        break loop;
+      }
     }
     itemList.add(item);
   }
